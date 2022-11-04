@@ -41,7 +41,20 @@ void setup() {
 
 void loop() {
   if(digitalRead(BUTTON_PIN) == HIGH && IMU.accelerationAvailable() && IMU.gyroscopeAvailable()){
-    Serial.println("in switch loop");
+    //Serial.println("in switch loop");
+    Serial.print("Time");
+    Serial.print(", ");
+    Serial.print("Ax");
+    Serial.print(", ");
+    Serial.print("Ay");
+    Serial.print(", ");
+    Serial.print("Az");
+    Serial.print(", ");
+    Serial.print("Gx");
+    Serial.print(", ");
+    Serial.print("Gy");
+    Serial.print(", ");
+    Serial.println("Gz");
     t = millis();
     numData = 0;
     while(digitalRead(BUTTON_PIN) == HIGH && numData < INPUT_LENGTH){

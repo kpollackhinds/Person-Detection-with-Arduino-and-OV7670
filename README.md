@@ -1,1 +1,1 @@
-# Arduino-Motion-Capture-and-Classification
+# Machine Learning On Arduino using TF-Lite

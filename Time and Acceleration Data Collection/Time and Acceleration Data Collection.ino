@@ -6,7 +6,8 @@
 #include <Arduino_LSM9DS1.h>
 
 
-
+#define GREEN 23  
+#define RED 22
 unsigned int numData = 0;
 const unsigned int INPUT_LENGTH = 1000;
 const unsigned int BUTTON_PIN = 2;
@@ -30,6 +31,9 @@ void setup() {
 
   pinMode(BUTTON_PIN, INPUT);
   pinMode(13, OUTPUT);
+
+  pinMode(RED, OUTPUT);
+  pinMode(GREEN, OUTPUT);
   
 
   // Begin IMU
@@ -58,7 +62,10 @@ void loop() {
     t = millis();
     numData = 0;
     while(digitalRead(BUTTON_PIN) == HIGH && numData < INPUT_LENGTH){
-      digitalWrite(13, HIGH);
+      //digitalWrite(13, HIGH);
+      digitalWrite(RED, HIGH);
+      digitalWrite(GREEN, LOW);
+
       //Data collection
       IMU.readAcceleration(xIn[numData],yIn[numData],zIn[numData]);
       IMU.readGyroscope(gx[numData], gy[numData], gz[numData]);
@@ -84,6 +91,8 @@ void loop() {
       delay(delayTime);
       
     }
+    digitalWrite(GREEN, HIGH);
+    digitalWrite(RED, LOW);
 
   }
   delay(delayTime);
